@@ -1,0 +1,33 @@
+.bookList {
+  margin-bottom: 10px;
+}
+
+.title{
+  border-top: 1px dotted rgb(0, 149, 176);
+  border-bottom: 1px dotted rgb(0, 149, 176);
+  text-align: center;
+  margin: 40px;
+  padding: 5px;
+  color: rgb(0, 149, 176);
+}
+
+.book {
+  margin-bottom: 25px;
+  width: 21%;
+  float: left;
+  margin-left: 3%;
+  border: 1px solid rgb(0, 149, 176);
+  padding: 10px;
+}
+
+.bookTitle {
+  color: #333;
+  font-weight: 900;
+  font-size: 16px;
+  margin-top: 4px;
+}
+
+.book img {
+  height: 250px;
+  background: black;
+}

@@ -12,3 +12,10 @@
   text-align: center;
   padding: 4px;
 }
+
+.searchArea .title{
+  text-align: center;
+  color: #333;
+  border: none;
+  margin: 20px;
+}
