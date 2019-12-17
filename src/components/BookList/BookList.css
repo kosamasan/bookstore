@@ -3,8 +3,8 @@
 }
 
 .title{
-  border-top: 1px dotted rgb(0, 149, 176);
-  border-bottom: 1px dotted rgb(0, 149, 176);
+  border-top: 2px dotted rgb(0, 149, 176);
+  border-bottom: 2px dotted rgb(0, 149, 176);
   text-align: center;
   margin: 40px;
   padding: 5px;
@@ -12,22 +12,34 @@
 }
 
 .book {
-  margin-bottom: 25px;
+  margin-bottom: 35px;
   width: 21%;
   float: left;
   margin-left: 3%;
-  border: 1px solid rgb(0, 149, 176);
   padding: 10px;
 }
 
-.bookTitle {
-  color: #333;
+.bookTitle{
+  color: rgb(0, 149, 176);
   font-weight: 900;
-  font-size: 16px;
-  margin-top: 4px;
+  font-size: 17px;
+  margin-top: 10px;
 }
 
 .book img {
   height: 250px;
   background: black;
+  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+@media only screen and (max-width: 992px) {
+  .book {
+    width: 40%;
+  }
+}
+
+@media only screen and (max-width: 674px) {
+  .book {
+    width: 80%;
+  }
 }

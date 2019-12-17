@@ -6,7 +6,6 @@ const Sorting = (props) => {
     <div className="dropdown">
       <button className="btn btn-default">Sort by ... </button>
       <div className="dropdown-content">
-
       </div>
     </div>
   )

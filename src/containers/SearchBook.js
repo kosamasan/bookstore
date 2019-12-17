@@ -19,8 +19,9 @@ class SearchBook extends Component {
     .then( response => {
       let returnedBooks = JSON.parse(response.data.replace('"You Don’t Know JS"', '`You Don’t Know JS`'));
       returnedBooks.books.map((book) => {
-        book.image = 'http://covers.openlibrary.org/b/isbn/'+book.isbn+'-M.jpg'
-        return books.push(book)   
+        book.image = 'http://covers.openlibrary.org/b/isbn/'+book.isbn+'-M.jpg';
+        book.imageLarge = 'http://covers.openlibrary.org/b/isbn/'+book.isbn+'-L.jpg';
+        return books.push(book);
       })
       this.setState({loading: false});
       this.props.initialBooks(books);
@@ -46,8 +47,8 @@ class SearchBook extends Component {
 
   }
 
-  bookSelection = () => {
-
+  bookSelection = (book) => {
+    this.props.selectBook(book)
   }
 
   render () {
@@ -58,7 +59,7 @@ class SearchBook extends Component {
           <h1 className='title'>Search to find your new book</h1>
         </div>
         <div className='row'>
-          <div col-md-10 col-md-offset-1>
+          <div>
             <Search filterList={this.filterList} />
             <Sorting sortBy={this.sortBy}/>
           </div>
@@ -68,7 +69,7 @@ class SearchBook extends Component {
       </div>
       
       <div className="row bookList">
-        <BookList books={this.props.booksFiltered} bookSelection={this.bookSelection}/>
+        <BookList books={this.props.booksFiltered} bookSelection={this.bookSelection} title='Our Books'/>
       </div>
     </div>;
     if (this.state.loading) {

@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .footer {
@@ -18,4 +19,8 @@
   color: #333;
   border: none;
   margin: 20px;
+}
+
+.checked {
+  color: orange;
 }

@@ -4,7 +4,7 @@ import { Route, NavLink, Switch, Redirect } from 'react-router-dom';
 
 import SearchBook from './containers/SearchBook';
 import CreateBook from './containers/CreateBook';
-import Book from './containers/Book';
+import Book from './containers/Book/Book';
 import './App.css';
 
 function App() {
@@ -48,30 +48,17 @@ function App() {
                     }}><span className="glyphicon glyphicon-plus"></span> Create Book
                   </NavLink>
                 </li>
-                <li>
-                  <NavLink
-                    to="/single-book/"
-                    exact
-                    activeClassName="my-active"
-                    activeStyle={{
-                        color: '#ffffff',
-                        backgroundColor: '#0095b0',
-                        textDecoration: 'none',
-                        borderRadius: '10px'
-                    }}><span className="glyphicon glyphicon-plus-sign"></span> Book
-                  </NavLink>
-                </li>
               </ul>
             </div>
           </nav>
         </header>
-        <div className="container-fluid">
+        <div className="container">
           <Switch>
             <Route path="/" exact component={SearchBook} />
             <Route path="/create-book" component={CreateBook} />
             <Route path="/single-book" component={Book} />
-            <Redirect to="/" />
           </Switch>
+          <Redirect to="/" />
         </div>
           <div className="footer">
             &#169; BookStore
