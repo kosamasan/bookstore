@@ -33,14 +33,12 @@ class SearchBook extends Component {
   }
 
   filterList =(event)=> {
-    let updatedList = [...this.props.movies];
-    console.log(updatedList);
+    let updatedList = [...this.props.books];
     updatedList = updatedList.filter((item)=>{
       return item.title.toLowerCase().search(
         event.target.value.toLowerCase()) !== -1;
     });
-    console.log(updatedList);
-    this.props.setMoviesFiltered(updatedList);
+    this.props.setBooksFiltered(updatedList);
   }
 
   sortBy = () => {
