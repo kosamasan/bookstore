@@ -4,7 +4,7 @@ import './Filtering.css';
 const FilteringAuthor = (props) => {
   let authors = [];
   props.books.map((book) => {
-    authors.push(book.author);
+    return authors.push(book.author);
   })
   return (
     <div className="dropdown">

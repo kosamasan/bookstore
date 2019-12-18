@@ -4,7 +4,7 @@ import './Filtering.css';
 const FilteringPublisher = (props) => {
   let publishers = [];
   props.books.map((book) => {
-    publishers.push(book.publisher);
+    return publishers.push(book.publisher);
   })
   // we reasure unique values in the array
   publishers = [...new Set(publishers)];

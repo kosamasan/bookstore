@@ -4,7 +4,7 @@ import './Filtering.css';
 const FilteringYear = (props) => {
   let years = [];
   props.books.map((book) => {
-    years.push(new Date(book.published).getFullYear());
+    return years.push(new Date(book.published).getFullYear());
   })
   // we reasure unique values in the array
   years = [...new Set(years)];
