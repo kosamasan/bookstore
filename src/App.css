@@ -24,3 +24,7 @@
 .checked {
   color: orange;
 }
+
+.searchArea .glyphicon {
+  top: 2px;
+}

@@ -17,6 +17,7 @@
   float: left;
   margin-left: 3%;
   padding: 10px;
+  min-height: 350px;
 }
 
 .bookTitle{
@@ -28,8 +29,9 @@
 
 .book img {
   height: 250px;
-  background: black;
+  background: url("../../assets/notFound.png");
   box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-size: cover
 }
 
 @media only screen and (max-width: 992px) {

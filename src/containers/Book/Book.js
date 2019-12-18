@@ -16,7 +16,7 @@ class Book extends Component {
 				<div className='row'>
 					<div className='preview col-md-5 col-md-offset-1'>
 						  <div><img src={this.props.details.imageLarge} alt={this.props.details.title}/></div>
-              <div className='author'><h4>{this.props.details.author}</h4></div>
+              <div className='author'><h4>Author: {this.props.details.author}</h4></div>
 					</div>
 					<div className='details col-md-5 col-md-offest-1'>
 						<h3 className='product-title'>{this.props.details.title}</h3>
@@ -38,8 +38,10 @@ class Book extends Component {
 						<h4 className='publisher'><b>Publisher :</b> <span>{this.props.details.publisher}</span></h4>
 						<p className='pages'><b>Year :</b> {new Date(this.props.details.published).getFullYear()}</p>
             <p className='pages'><b>Number of pages :</b> {this.props.details.pages}</p>
+						<p className='pages'><b>Category :</b> {this.props.details.category}</p>
 						<p className='vote'><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
 						<p className='isbn'><b>ISBN-10 :</b> {this.props.details.isbn}</p>
+						<p className='isbn'><b>ISBN-13 :</b> {this.props.details.isbn13}</p>
 						<div className='action'>
 							<button className='btn btn-primary' type='button'><span className='fa fa-shopping-cart'> Add to cart</span></button>
 						</div>
