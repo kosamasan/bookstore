@@ -1,0 +1,47 @@
+/* .Input {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.Label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.InputElement {
+    outline: none;
+    border: 1px solid #ccc;
+    background-color: white;
+    font: inherit;
+    padding: 6px 10px;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+} */
+
+.invalid {
+    border: 1px solid red;
+    background-color: #FDA49A;
+} 
+
+.bookForm .input {
+    width: 48%;
+    float: left;
+    margin: 1%;
+}
+
+.bookForm .input:focus {
+    outline: none;
+    background-color: #ccc;
+}
+
+.createBookButton {
+    margin-top: 0px;
+    width: 100%;
+}
+
+.bookForm .alert {
+    margin-bottom: 2px;
+} 
