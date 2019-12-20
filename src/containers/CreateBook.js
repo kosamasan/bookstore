@@ -18,6 +18,7 @@ class CreateBook extends Component {
                     minLength: 10,
                     maxLength: 120,
                 },
+                label: 'Title *',
                 errorMessage: 'Invalid Title. Title should be between 10 and 120 characters.',
                 valid: false,
                 touched: false
@@ -34,6 +35,7 @@ class CreateBook extends Component {
                     maxLength: 512,
                     starstsWithCapital: true
                 },
+                label: 'Description *',
                 errorMessage: 'Invalid description. Description should shorter than 512 characters and start with capital letter.',
                 valid: false,
                 touched: false
@@ -50,6 +52,7 @@ class CreateBook extends Component {
                     minLength: 5,
                     maxLength: 60,
                 },
+                label: 'Publisher',
                 errorMessage: 'Invalid publisher. Publisher should be between 5 and 60 characters.',
                 valid: false,
                 touched: false
@@ -67,6 +70,7 @@ class CreateBook extends Component {
                     maxLength: 4,
                     isNumeric: true
                 },
+                label: 'Year Published *',
                 errorMessage: 'Invalid year. Year should be numeric with 4 characters.',
                 valid: false,
                 touched: false
@@ -84,6 +88,7 @@ class CreateBook extends Component {
                     isNumeric: true,
                     max: 9999
                 },
+                label: 'Number of Pages *',
                 errorMessage: 'Invalid Number of Pages. It should be up to 9999 pages.',
                 valid: false,
                 touched: false
@@ -101,6 +106,7 @@ class CreateBook extends Component {
                     maxLength: 10,
                     isNumeric: true
                 },
+                label: 'ISBN-10 *',
                 errorMessage: 'Invalid Number of Pages. It should be 10 characters.',
                 valid: false,
                 touched: false
@@ -118,6 +124,7 @@ class CreateBook extends Component {
                     maxLength: 13,
                     isNumeric: true
                 },
+                label: 'ISBN-13 *',
                 errorMessage: 'Invalid Number of Pages. It should be 13 characters.',
                 valid: false,
                 touched: false
@@ -133,6 +140,7 @@ class CreateBook extends Component {
                     upToFourStrings: true,
                     maxLength: 60,
                 },
+                label: 'Category',
                 errorMessage: 'Invalid category. It should be up to four comma seperated.',
                 valid: false,
                 touched: false
@@ -148,6 +156,7 @@ class CreateBook extends Component {
                     upToThreeStrings: true,
                     maxLength: 60,
                 },
+                label: 'Aythor *',
                 errorMessage: 'Invalid author. It should be up to three comma seperated.',
                 valid: false,
                 touched: false
@@ -259,6 +268,7 @@ class CreateBook extends Component {
                         key={formElement.id}
                         elementType={formElement.config.elementType}
                         elementConfig={formElement.config.elementConfig}
+                        label={formElement.config.label}
                         value={formElement.config.value}
                         invalid={!formElement.config.valid}
                         shouldValidate={formElement.config.validation}
@@ -277,9 +287,9 @@ class CreateBook extends Component {
         }
         return (
             <div className='container'>
-                <h4>Create new book</h4>
+                <h3 className='title'>Create new book</h3>
                 {form}
-                <button className='btn btn-success' disabled={!this.state.formIsValid}>SAVE</button>
+                <button className='btn btn-success createBookButton' disabled={!this.state.formIsValid}>SAVE</button>
             </div>
         );
     }

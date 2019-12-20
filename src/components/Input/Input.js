@@ -51,7 +51,7 @@ const input = ( props ) => {
 
     return (
         <div className='input'>
-            {/* <label className='control-label'>{props.label}</label> */}
+            <label className='control-label label'>{props.label}</label>
             {inputElement}
             {validationError}
         </div>

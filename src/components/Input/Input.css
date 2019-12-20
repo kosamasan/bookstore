@@ -4,11 +4,7 @@
     box-sizing: border-box;
 }
 
-.Label {
-    font-weight: bold;
-    display: block;
-    margin-bottom: 8px;
-}
+
 
 .InputElement {
     outline: none;
@@ -20,6 +16,13 @@
     width: 100%;
     box-sizing: border-box;
 } */
+
+.label {
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: rgb(0, 149, 176);;
+    font-size: 12px;
+}
 
 .invalid {
     border: 1px solid red;
@@ -38,8 +41,7 @@
 }
 
 .createBookButton {
-    margin-top: 0px;
-    width: 100%;
+    margin-top: 10px;
 }
 
 .bookForm .alert {
