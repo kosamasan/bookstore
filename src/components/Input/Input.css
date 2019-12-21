@@ -1,3 +1,7 @@
+.bookForm {
+    margin-bottom: 40px;
+}
+
 .label {
     font-weight: bold;
     margin-bottom: 8px;
@@ -28,4 +32,11 @@
 
 .bookForm .alert {
     margin-bottom: 1px;
-} 
+}
+
+@media only screen and (max-width: 674px) {
+    .bookForm .input {
+        width: 100%;
+        margin: 1%;
+    }
+  }

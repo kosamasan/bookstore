@@ -5,13 +5,16 @@ import BookList from '../../components/BookList/BookList';
 import './Book.css';
 
 class Book extends Component {
+	// select another book
 	bookSelection = (book) => {
     this.props.selectBook(book)
 	}
 	
   render () {
+		// data for more books section
 		let filteredArray = this.props.books.filter(item => item.isbn !== this.props.details.isbn).slice(0,4);
     return (
+			// the single book template
       <div className='card'>
 				<div className='row'>
 					<div className='preview col-md-5 col-md-offset-1'>

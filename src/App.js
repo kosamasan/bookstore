@@ -18,7 +18,9 @@ class App extends Component {
 
   componentDidMount () {
     let books = [];
+    // turn Spinner on
     this.setState({ loading: true });
+    // request to get the data from server
     axios.get('https://gist.githubusercontent.com/nanotaboada/6396437/raw/82dca67cc3b6a5ccfcf8af012664cdaa0025d999/books.json#')
     .then( response => {
       let returnedBooks = JSON.parse(response.data.replace('"You Don’t Know JS"', '`You Don’t Know JS`'));
@@ -33,7 +35,9 @@ class App extends Component {
         book.imageLarge = 'http://covers.openlibrary.org/b/isbn/'+book.isbn+'-L.jpg';
         return books.push(book);
       })
+      // turn the Spinner off
       this.setState({loading: false});
+      // books from server to redux store
       this.props.initialBooks(books);
       this.props.setBooksFiltered(books);
     } )
@@ -44,6 +48,7 @@ class App extends Component {
   }
 
   render () {
+    // template for navbar or loader or error message
     let output = 
     <BrowserRouter>
       <div className="App">

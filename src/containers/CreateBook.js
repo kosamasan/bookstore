@@ -29,9 +29,12 @@ class CreateBook extends Component {
                 elementType: 'input',
                 elementConfig: {
                     type: 'text',
-                    placeholder: 'Subtitle'
+                    placeholder: 'Subtitle ^'
                 },
                 value: '',
+                validation: {
+                    required: true
+                },
                 validation: {
                     required: false
                 },
@@ -185,13 +188,14 @@ class CreateBook extends Component {
 
     orderHandler = ( event ) => {
         event.preventDefault();
+        // turn the Spinner on
         this.setState( { loading: true } );
+        // get the submitted data
         const formData = {};
         for (let formElementIdentifier in this.state.orderForm) {
             formData[formElementIdentifier] = this.state.orderForm[formElementIdentifier].value;
-            console.log(formData)
         }
-        console.log(formData)
+        // constract the oject to be submitted
         const book =  {
             isbn: formData.isbn10,
             title: formData.title,
@@ -208,14 +212,18 @@ class CreateBook extends Component {
             imageLarge: 'http://covers.openlibrary.org/b/isbn/'+formData.isbn10+'-L.jpg'
         }        
         
+        // add new book to the existing list andupdate store
         let updatedList = [...this.props.books, book];
         this.props.initialBooks(updatedList);
         this.props.setBooksFiltered(updatedList);
+        // turn the Spinner off
         this.setState( { loading: false } );
+        //redirect the user to home page
         this.props.history.push( '/' );
     }
 
     checkValidity(value, rules) {
+        // check if data are valid based on rules
         let isValid = true;
         if (!rules) {
             return true;
@@ -271,6 +279,7 @@ class CreateBook extends Component {
     }
 
     inputChangedHandler = (event, inputIdentifier) => {
+        // onevery input change get vlues, check validitu andset to touched
         const updatedOrderForm = {
             ...this.state.orderForm
         };

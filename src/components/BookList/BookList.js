@@ -6,7 +6,6 @@ const BookList = (props) => {
   const books = props.books;
   
   return (
-    // using destructuring
     <div className='bookList'>
       <div >
         <h2 className='title'>{props.title}</h2>
