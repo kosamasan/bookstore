@@ -35,9 +35,6 @@ class CreateBook extends Component {
                 validation: {
                     required: true
                 },
-                validation: {
-                    required: false
-                },
                 label: 'Subtitle',
                 errorMessage: '',
                 valid: false,
