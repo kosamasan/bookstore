@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-
+import { connect } from 'react-redux';
+import * as actionCreators from '../store/actions';
 import Spinner from '../components/Spinner/Spinner';
 import Input from '../components/Input/Input';
 
@@ -17,9 +18,25 @@ class CreateBook extends Component {
                     required: true,
                     minLength: 10,
                     maxLength: 120,
+                    specialCharacters: true
                 },
                 label: 'Title *',
                 errorMessage: 'Invalid Title. Title should be between 10 and 120 characters.',
+                valid: false,
+                touched: false
+            },
+            subTitle: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'text',
+                    placeholder: 'Subtitle'
+                },
+                value: '',
+                validation: {
+                    required: false
+                },
+                label: 'Subtitle',
+                errorMessage: '',
                 valid: false,
                 touched: false
             },
@@ -68,10 +85,11 @@ class CreateBook extends Component {
                     required: true,
                     minLength: 4,
                     maxLength: 4,
+                    maxNumber: 2020,
                     isNumeric: true
                 },
                 label: 'Year Published *',
-                errorMessage: 'Invalid year. Year should be numeric with 4 characters.',
+                errorMessage: 'Invalid year. Year should be numeric with 4 characters and lower than 2020.',
                 valid: false,
                 touched: false
             },
@@ -85,8 +103,7 @@ class CreateBook extends Component {
                 validation: {
                     required: true,
                     maxLength: 4,
-                    isNumeric: true,
-                    max: 9999
+                    isNumeric: true
                 },
                 label: 'Number of Pages *',
                 errorMessage: 'Invalid Number of Pages. It should be up to 9999 pages.',
@@ -119,7 +136,7 @@ class CreateBook extends Component {
                 },
                 value: '',
                 validation: {
-                    required: true,
+                    required: false,
                     minLength: 13,
                     maxLength: 13,
                     isNumeric: true
@@ -137,8 +154,8 @@ class CreateBook extends Component {
                 },
                 value: '',
                 validation: {
+                    required: false,
                     upToFourStrings: true,
-                    maxLength: 60,
                 },
                 label: 'Category',
                 errorMessage: 'Invalid category. It should be up to four comma seperated.',
@@ -172,20 +189,30 @@ class CreateBook extends Component {
         const formData = {};
         for (let formElementIdentifier in this.state.orderForm) {
             formData[formElementIdentifier] = this.state.orderForm[formElementIdentifier].value;
+            console.log(formData)
         }
-        const order = {
-            ingredients: this.props.ingredients,
-            price: this.props.price,
-            orderData: formData
-        }
-        // axios.post( '/orders.json', order )
-        //     .then( response => {
-        //         this.setState( { loading: false } );
-        //         this.props.history.push( '/' );
-        //     } )
-        //     .catch( error => {
-        //         this.setState( { loading: false } );
-        //     } );
+        console.log(formData)
+        const book =  {
+            isbn: formData.isbn10,
+            title: formData.title,
+            subtitle: formData.subTitle,
+            author: formData.author,
+            published: new Date(formData.year).toString(),
+            publisher: formData.publisher,
+            pages: formData.mumberOfPages,
+            description: formData.description,
+            website: '',
+            isbn13: formData.isbn13,
+            category: formData.isbn13,
+            image: 'http://covers.openlibrary.org/b/isbn/'+formData.isbn10+'-M.jpg',
+            imageLarge: 'http://covers.openlibrary.org/b/isbn/'+formData.isbn10+'-L.jpg'
+        }        
+        
+        let updatedList = [...this.props.books, book];
+        this.props.initialBooks(updatedList);
+        this.props.setBooksFiltered(updatedList);
+        this.setState( { loading: false } );
+        this.props.history.push( '/' );
     }
 
     checkValidity(value, rules) {
@@ -204,6 +231,10 @@ class CreateBook extends Component {
 
         if (rules.maxLength) {
             isValid = value.length <= rules.maxLength && isValid
+        }
+
+        if (rules.maxNumber) {
+            isValid = value <= rules.maxNumber && isValid
         }
 
         if (rules.isEmail) {
@@ -228,6 +259,11 @@ class CreateBook extends Component {
 
         if (rules.upToFourStrings) {
             const pattern = /^[^,]+(?:,[^,]+){0,3}$/;
+            isValid = pattern.test(value) && isValid
+        }
+
+        if (rules.specialCharacters) {
+            const pattern = /^[a-zA-Z0-9@" #&*!&*)(+=._-]*$/;
             isValid = pattern.test(value) && isValid
         }
 
@@ -276,11 +312,8 @@ class CreateBook extends Component {
                         touched={formElement.config.touched}
                         changed={(event) => this.inputChangedHandler(event, formElement.id)} />
                 ))}
-                <div className='row createBookButton'>
-                    
-                </div>
+                <button className='btn btn-success' disabled={!this.state.formIsValid}>SAVE</button>
             </form>
-           
         );
         if ( this.state.loading ) {
             form = <Spinner />;
@@ -289,10 +322,25 @@ class CreateBook extends Component {
             <div className='container'>
                 <h3 className='title'>Create new book</h3>
                 {form}
-                <button className='btn btn-success createBookButton' disabled={!this.state.formIsValid}>SAVE</button>
             </div>
         );
     }
 }
 
-export default CreateBook;
+const mapStateToProps = state => {
+    return {
+      details: state.selectedBook,
+      books: state.books,
+      booksFiltered: state.booksFiltered
+    };
+  };
+  
+  const mapDispatchToProps = dispatch => {
+    return {
+      selectBook: (val) => dispatch(actionCreators.selectBook(val)),
+      initialBooks: (val) => dispatch(actionCreators.initialBooks(val)),
+      setBooksFiltered: (val) => dispatch(actionCreators.booksFiltered(val))
+    };
+  };
+  
+export default connect(mapStateToProps, mapDispatchToProps)(CreateBook);

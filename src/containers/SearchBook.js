@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { connect } from 'react-redux';
 import * as actionCreators from '../store/actions';
 import FilteringAuthor from '../components/Filtering/FilteringAuthor';
@@ -7,40 +6,10 @@ import FilteringPublisher from '../components/Filtering/FilteringPublisher';
 import FilteringYear from '../components/Filtering/FilteringYear';
 import Search from '../components/Search/Search';
 import BookList from '../components/BookList/BookList';
-import Spinner from '../components/Spinner/Spinner';
 
 class SearchBook extends Component {
   state = {
-    loading: false,
     filters: false,
-    error: false
-  }
-
-  componentDidMount () {
-    let books = [];
-    this.setState({ loading: true });
-    axios.get('https://gist.githubusercontent.com/nanotaboada/6396437/raw/82dca67cc3b6a5ccfcf8af012664cdaa0025d999/books.json#')
-    .then( response => {
-      let returnedBooks = JSON.parse(response.data.replace('"You Don’t Know JS"', '`You Don’t Know JS`'));
-      returnedBooks.books.map((book) => {
-        if(!book.hasOwnProperty('isbn13')) {
-          book.isbn13 = 'N/A';
-        }
-        if(!book.hasOwnProperty('category')) {
-          book.category = 'N/A';
-        }
-        book.image = 'http://covers.openlibrary.org/b/isbn/'+book.isbn+'-M.jpg';
-        book.imageLarge = 'http://covers.openlibrary.org/b/isbn/'+book.isbn+'-L.jpg';
-        return books.push(book);
-      })
-      this.setState({loading: false});
-      this.props.initialBooks(books);
-      this.props.setBooksFiltered(books);
-    } )
-    .catch( error => {
-      this.setState({ error: true })
-      console.log( error );
-    } );
   }
 
   searchBooks =(event)=> {
@@ -101,7 +70,7 @@ class SearchBook extends Component {
           </div>
           {this.state.filters &&
           <div className="col-md-2">
-            <button className='btn btn-danger' onClick={() => {this.removeFilters()}}> <span class="glyphicon glyphicon-remove"></span> Remove filters</button>
+            <button className='btn btn-danger' onClick={() => {this.removeFilters()}}> <span className="glyphicon glyphicon-remove"></span> Remove filters</button>
           </div>}
         </div>
       </div>
@@ -109,12 +78,7 @@ class SearchBook extends Component {
         <BookList books={this.props.booksFiltered} bookSelection={this.bookSelection} title='Our Books'/>
       </div>
     </div>;
-    if (this.state.loading) {
-      output = <Spinner />
-    }
-    if (this.state.error) {
-      output = <div className='alert alert-danger'>There was an error. Please try later</div>
-    }
+
     return (
       <div>{output}</div>
     );
