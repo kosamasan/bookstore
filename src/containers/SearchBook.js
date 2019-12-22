@@ -14,7 +14,7 @@ class SearchBook extends Component {
 
   // the search book function
   searchBooks =(event)=> {
-    let updatedList = [...this.props.books];
+    let updatedList = [...this.props.booksAll];
     // filter the existin list base to user input
     updatedList = updatedList.filter((item)=>{
       return item.title.toLowerCase().search(
@@ -50,7 +50,7 @@ class SearchBook extends Component {
 
   // update redux store on book selection
   bookSelection = (book) => {
-    this.props.selectBook(book)
+    this.props.bookSelected(book)
   }
 
   // remove the filters used. Update the list to the initial
@@ -67,7 +67,7 @@ class SearchBook extends Component {
           <h1 className='title'>Search to find your new book</h1>
         </div>
         <div className='row'>
-          <Search searchBooks={this.searchBooks} />
+          <Search searchBooks={this.searchBooks} placeholder='Type the title of the book to search' />
         </div>
         <div className='row'>
           <div className="col-xs-3 col-xs-offset-0 col-md-2 col-md-offset-2">
@@ -98,16 +98,15 @@ class SearchBook extends Component {
 
 const mapStateToProps = state => {
   return {
-    details: state.selectedBook,
-    books: state.books,
+    details: state.bookSelected,
+    booksAll: state.booksAll,
     booksFiltered: state.booksFiltered
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    selectBook: (val) => dispatch(actionCreators.selectBook(val)),
-    initialBooks: (val) => dispatch(actionCreators.initialBooks(val)),
+    bookSelected: (val) => dispatch(actionCreators.bookSelected(val)),
     setBooksFiltered: (val) => dispatch(actionCreators.booksFiltered(val))
   };
 };

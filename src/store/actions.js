@@ -1,10 +1,10 @@
-export const INITIAL_BOOKS = 'INITIAL_BOOKS';
+export const BOOKS_ALL = 'BOOKS_ALL';
 export const BOOKS_FILTERED = 'BOOKS_FILTERED';
-export const SELECT_BOOK = 'SELECT_BOOK';
+export const BOOK_SELECTED = 'BOOK_SELECTED';
 
-export const initialBooks = (value) => {
+export const booksAll = (value) => {
   return {
-      type: INITIAL_BOOKS,
+      type: BOOKS_ALL,
       val: value
   };
 };
@@ -16,9 +16,9 @@ export const booksFiltered = (value) => {
   };
 };
 
-export const selectBook = (value) => {
+export const bookSelected = (value) => {
   return {
-      type: SELECT_BOOK,
+      type: BOOK_SELECTED,
       val: value
   };
 };

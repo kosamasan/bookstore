@@ -9,7 +9,7 @@ const input = ( props ) => {
 
     if (props.invalid && props.shouldValidate && props.touched) {
         inputClasses.push('invalid');
-        validationError =  <div className='alert alert-danger'>{props.errorMessage}</div>;;
+        validationError =  <div className='alert alert-danger'>{props.errorMessage}</div>;
     }
 
     switch ( props.elementType ) {

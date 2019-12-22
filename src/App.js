@@ -17,6 +17,10 @@ class App extends Component {
   }
 
   componentDidMount () {
+    this.getBooksFromServer();
+  }
+
+  getBooksFromServer = () => {
     let books = [];
     // turn Spinner on
     this.setState({ loading: true });
@@ -38,7 +42,7 @@ class App extends Component {
       // turn the Spinner off
       this.setState({loading: false});
       // books from server to redux store
-      this.props.initialBooks(books);
+      this.props.setBooksAll(books);
       this.props.setBooksFiltered(books);
     } )
     .catch( error => {
@@ -120,8 +124,7 @@ class App extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    selectBook: (val) => dispatch(actionCreators.selectBook(val)),
-    initialBooks: (val) => dispatch(actionCreators.initialBooks(val)),
+    setBooksAll: (val) => dispatch(actionCreators.booksAll(val)),
     setBooksFiltered: (val) => dispatch(actionCreators.booksFiltered(val))
   };
 };

@@ -29,11 +29,11 @@ class CreateBook extends Component {
                 elementType: 'input',
                 elementConfig: {
                     type: 'text',
-                    placeholder: 'Subtitle ^'
+                    placeholder: 'Subtitle *'
                 },
                 value: '',
                 validation: {
-                    required: true
+                    required: false
                 },
                 label: 'Subtitle',
                 errorMessage: '',
@@ -210,8 +210,8 @@ class CreateBook extends Component {
         }        
         
         // add new book to the existing list andupdate store
-        let updatedList = [...this.props.books, book];
-        this.props.initialBooks(updatedList);
+        let updatedList = [...this.props.booksAll, book];
+        this.props.setBooksAll(updatedList);
         this.props.setBooksFiltered(updatedList);
         // turn the Spinner off
         this.setState( { loading: false } );
@@ -335,16 +335,13 @@ class CreateBook extends Component {
 
 const mapStateToProps = state => {
     return {
-      details: state.selectedBook,
-      books: state.books,
-      booksFiltered: state.booksFiltered
+      booksAll: state.booksAll
     };
   };
   
   const mapDispatchToProps = dispatch => {
     return {
-      selectBook: (val) => dispatch(actionCreators.selectBook(val)),
-      initialBooks: (val) => dispatch(actionCreators.initialBooks(val)),
+      setBooksAll: (val) => dispatch(actionCreators.booksAll(val)),
       setBooksFiltered: (val) => dispatch(actionCreators.booksFiltered(val))
     };
   };

@@ -3,88 +3,148 @@ import reducer from './reducer';
 describe('reducer', () => {
   it('should return the initial state when no action is provided', () => {
     expect(reducer(undefined, {})).toEqual({
-      movies: [],
-      moviesFiltered: [],
-      selectedMovie: {}
+      booksAll: [],
+      booksFiltered: [],
+      bookSelected: {}
     });
   });
 });
 
 describe('reducer', () => {
-  it('should store the initial movies', () => {
+  it('should store the initial books', () => {
     expect(reducer({
-      movies: [],
-      moviesFiltered: [],
-      selectedMovie: {}
+      booksAll: [],
+      booksFiltered: [],
+      bookSelected: {}
   },{
-    type: 'INITIAL_MOVIES',
+    type: 'BOOKS_ALL',
     val: [{
-      title: 'Episode VI - Return of the Jedi',
-      summary: 'Luke Skywalker',
-      director: 'Richard Marquand'
+      isbn: '9781593275846',
+      title: 'Eloquent JavaScript, Second Edition',
+      subtitle: 'A Modern Introduction to Programming',
+      author: 'Marijn Haverbeke',
+      published: '2014-12-14T00:00:00.000Z',
+      publisher: 'No Starch Press',
+      pages: 472,
+      description: 'JavaScript lies at the heart of almost every modern web application, from social apps to the newest browser-based games. Though simple for beginners to pick up and play with, JavaScript is a flexible, complex language that you can use to build full-scale applications.',
+      website: 'http://eloquentjavascript.net/',
+      isbn13: 'N/A',
+      category: 'N/A',
+      image: 'http://covers.openlibrary.org/b/isbn/9781593275846-M.jpg',
+      imageLarge: 'http://covers.openlibrary.org/b/isbn/9781593275846-L.jpg'
     }]
   })).toEqual(
     {
-      movies: [{
-        title: 'Episode VI - Return of the Jedi',
-        summary: 'Luke Skywalker',
-        director: 'Richard Marquand'
+      booksAll:[{
+        isbn: '9781593275846',
+        title: 'Eloquent JavaScript, Second Edition',
+        subtitle: 'A Modern Introduction to Programming',
+        author: 'Marijn Haverbeke',
+        published: '2014-12-14T00:00:00.000Z',
+        publisher: 'No Starch Press',
+        pages: 472,
+        description: 'JavaScript lies at the heart of almost every modern web application, from social apps to the newest browser-based games. Though simple for beginners to pick up and play with, JavaScript is a flexible, complex language that you can use to build full-scale applications.',
+        website: 'http://eloquentjavascript.net/',
+        isbn13: 'N/A',
+        category: 'N/A',
+        image: 'http://covers.openlibrary.org/b/isbn/9781593275846-M.jpg',
+        imageLarge: 'http://covers.openlibrary.org/b/isbn/9781593275846-L.jpg'
       }],
-      moviesFiltered: [],
-      selectedMovie: {}
+      booksFiltered: [],
+      bookSelected: {}
     }
     );
   });
 });
 
 describe('reducer', () => {
-  it('should store the filtered movies', () => {
+  it('should store the filtered books', () => {
     expect(reducer({
-      movies: [],
-      moviesFiltered: [],
-      selectedMovie: {}
+      booksAll: [],
+      booksFiltered: [],
+      bookSelected: {}
   },{
-    type: 'MOVIES_FILTERED',
+    type: 'BOOKS_FILTERED',
     val: [{
-      title: 'Episode VI - Return of the Jedi',
-      summary: 'Luke Skywalker',
-      director: 'Richard Marquand'
+      isbn: '9781593275846',
+      title: 'Eloquent JavaScript, Second Edition',
+      subtitle: 'A Modern Introduction to Programming',
+      author: 'Marijn Haverbeke',
+      published: '2014-12-14T00:00:00.000Z',
+      publisher: 'No Starch Press',
+      pages: 472,
+      description: 'JavaScript lies at the heart of almost every modern web application, from social apps to the newest browser-based games. Though simple for beginners to pick up and play with, JavaScript is a flexible, complex language that you can use to build full-scale applications.',
+      website: 'http://eloquentjavascript.net/',
+      isbn13: 'N/A',
+      category: 'N/A',
+      image: 'http://covers.openlibrary.org/b/isbn/9781593275846-M.jpg',
+      imageLarge: 'http://covers.openlibrary.org/b/isbn/9781593275846-L.jpg'
     }]
   })).toEqual(
     {
-      movies: [],
-      moviesFiltered: [{
-        title: 'Episode VI - Return of the Jedi',
-        summary: 'Luke Skywalker',
-        director: 'Richard Marquand'
+      booksAll: [],
+      booksFiltered: [{
+        isbn: '9781593275846',
+        title: 'Eloquent JavaScript, Second Edition',
+        subtitle: 'A Modern Introduction to Programming',
+        author: 'Marijn Haverbeke',
+        published: '2014-12-14T00:00:00.000Z',
+        publisher: 'No Starch Press',
+        pages: 472,
+        description: 'JavaScript lies at the heart of almost every modern web application, from social apps to the newest browser-based games. Though simple for beginners to pick up and play with, JavaScript is a flexible, complex language that you can use to build full-scale applications.',
+        website: 'http://eloquentjavascript.net/',
+        isbn13: 'N/A',
+        category: 'N/A',
+        image: 'http://covers.openlibrary.org/b/isbn/9781593275846-M.jpg',
+        imageLarge: 'http://covers.openlibrary.org/b/isbn/9781593275846-L.jpg'
       }],
-      selectedMovie: {}
+      bookSelected: {}
     }
     );
   });
 });
 
 describe('reducer', () => {
-  it('should store the selected movie data', () => {
+  it('should store the filtered books', () => {
     expect(reducer({
-      movies: [],
-      moviesFiltered: [],
-      selectedMovie: {}
+      booksAll: [],
+      booksFiltered: [],
+      bookSelected: {}
   },{
-    type: 'SELECT_MOVIE',
+    type: 'BOOK_SELECTED',
     val: {
-      title: 'Episode VI - Return of the Jedi',
-      summary: 'Luke Skywalker',
-      director: 'Richard Marquand'
+      isbn: '9781593275846',
+      title: 'Eloquent JavaScript, Second Edition',
+      subtitle: 'A Modern Introduction to Programming',
+      author: 'Marijn Haverbeke',
+      published: '2014-12-14T00:00:00.000Z',
+      publisher: 'No Starch Press',
+      pages: 472,
+      description: 'JavaScript lies at the heart of almost every modern web application, from social apps to the newest browser-based games. Though simple for beginners to pick up and play with, JavaScript is a flexible, complex language that you can use to build full-scale applications.',
+      website: 'http://eloquentjavascript.net/',
+      isbn13: 'N/A',
+      category: 'N/A',
+      image: 'http://covers.openlibrary.org/b/isbn/9781593275846-M.jpg',
+      imageLarge: 'http://covers.openlibrary.org/b/isbn/9781593275846-L.jpg'
     }
   })).toEqual(
     {
-      movies: [],
-      moviesFiltered: [],
-      selectedMovie: {
-        title: 'Episode VI - Return of the Jedi',
-        summary: 'Luke Skywalker',
-        director: 'Richard Marquand'
+      booksAll: [],
+      booksFiltered: [],
+      bookSelected: {
+        isbn: '9781593275846',
+        title: 'Eloquent JavaScript, Second Edition',
+        subtitle: 'A Modern Introduction to Programming',
+        author: 'Marijn Haverbeke',
+        published: '2014-12-14T00:00:00.000Z',
+        publisher: 'No Starch Press',
+        pages: 472,
+        description: 'JavaScript lies at the heart of almost every modern web application, from social apps to the newest browser-based games. Though simple for beginners to pick up and play with, JavaScript is a flexible, complex language that you can use to build full-scale applications.',
+        website: 'http://eloquentjavascript.net/',
+        isbn13: 'N/A',
+        category: 'N/A',
+        image: 'http://covers.openlibrary.org/b/isbn/9781593275846-M.jpg',
+        imageLarge: 'http://covers.openlibrary.org/b/isbn/9781593275846-L.jpg'
       }
     }
     );

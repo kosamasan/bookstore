@@ -7,12 +7,12 @@ import './Book.css';
 class Book extends Component {
 	// select another book
 	bookSelection = (book) => {
-    this.props.selectBook(book)
+    this.props.bookSelected(book)
 	}
 	
   render () {
 		// data for more books section
-		let filteredArray = this.props.books.filter(item => item.isbn !== this.props.details.isbn).slice(0,4);
+		let filteredArray = this.props.booksAll.filter(item => item.isbn !== this.props.details.isbn).slice(0,4);
     return (
 			// the single book template
       <div className='card'>
@@ -58,17 +58,14 @@ class Book extends Component {
 
 const mapStateToProps = state => {
   return {
-    details: state.selectedBook,
-    books: state.books,
-    booksFiltered: state.booksFiltered
+    details: state.bookSelected,
+    booksAll: state.booksAll
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    selectBook: (val) => dispatch(actionCreators.selectBook(val)),
-    initialBooks: (val) => dispatch(actionCreators.initialBooks(val)),
-    setBooksFiltered: (val) => dispatch(actionCreators.booksFiltered(val))
+    bookSelected: (val) => dispatch(actionCreators.bookSelected(val))
   };
 };
 
