@@ -6,7 +6,7 @@
     font-weight: bold;
     margin-bottom: 8px;
     color: rgb(0, 149, 176);;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .invalid {
@@ -17,12 +17,20 @@
 .bookForm .input {
     width: 48%;
     float: left;
-    margin: 1%;
+    margin: 0% 1%;
+    min-height: 107px;
 }
 
 .bookForm .input:focus {
     outline: none;
     background-color: #ccc;
+}
+
+.alert {
+    padding: 5px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
 }
 
 .createBookButton {

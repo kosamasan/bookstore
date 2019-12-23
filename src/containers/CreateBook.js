@@ -35,7 +35,7 @@ class CreateBook extends Component {
                 validation: {
                     required: false
                 },
-                label: 'Subtitle',
+                label: 'Subtitle *',
                 errorMessage: '',
                 valid: false,
                 touched: false
@@ -318,7 +318,7 @@ class CreateBook extends Component {
                         touched={formElement.config.touched}
                         changed={(event) => this.inputChangedHandler(event, formElement.id)} />
                 ))}
-                <button className='btn btn-success' disabled={!this.state.formIsValid}>SAVE</button>
+                <button className='btn btn-success' disabled={!this.state.formIsValid}>SAVE BOOK</button>
             </form>
         );
         if ( this.state.loading ) {
