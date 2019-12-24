@@ -4,7 +4,7 @@ import * as actionCreators from '../store/actions';
 import Spinner from '../components/Spinner/Spinner';
 import Input from '../components/Input/Input';
 
-class CreateBook extends Component {
+export class CreateBook extends Component {
     state = {
         orderForm: {
             title: {
