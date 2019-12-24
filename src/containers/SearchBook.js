@@ -7,7 +7,7 @@ import FilteringYear from '../components/Filtering/FilteringYear';
 import Search from '../components/Search/Search';
 import BookList from '../components/BookList/BookList';
 
-class SearchBook extends Component {
+export class SearchBook extends Component {
   state = {
     filters: false,
   }

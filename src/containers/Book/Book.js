@@ -4,7 +4,7 @@ import * as actionCreators from '../../store/actions';
 import BookList from '../../components/BookList/BookList';
 import './Book.css';
 
-class Book extends Component {
+export class Book extends Component {
 	// select another book
 	bookSelection = (book) => {
     this.props.bookSelected(book)
