@@ -56,7 +56,7 @@ class SearchBook extends Component {
   // remove the filters used. Update the list to the initial
   removeFilters = () => {
     this.setState({ filters: false });
-    this.props.setBooksFiltered(this.props.books);
+    this.props.setBooksFiltered(this.props.booksAll);
   }
 
   render () {

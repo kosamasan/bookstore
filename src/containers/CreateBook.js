@@ -33,7 +33,7 @@ class CreateBook extends Component {
                 },
                 value: '',
                 validation: {
-                    required: false
+                    required: true
                 },
                 label: 'Subtitle *',
                 errorMessage: '',
@@ -61,7 +61,7 @@ class CreateBook extends Component {
                 elementType: 'input',
                 elementConfig: {
                     type: 'text',
-                    placeholder: 'Publisher'
+                    placeholder: 'Publisher *'
                 },
                 value: '',
                 validation: {
@@ -157,7 +157,7 @@ class CreateBook extends Component {
                     required: false,
                     upToFourStrings: true,
                 },
-                label: 'Category',
+                label: 'Category *',
                 errorMessage: 'Invalid category. It should be up to four comma seperated.',
                 valid: false,
                 touched: false

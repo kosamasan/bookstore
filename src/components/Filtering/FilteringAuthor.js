@@ -2,6 +2,7 @@ import React from 'react';
 import './Filtering.css';
 
 const FilteringAuthor = (props) => {
+  console.log(props)
   let authors = [];
   props.books.map((book) => {
     return authors.push(book.author);
