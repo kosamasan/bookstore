@@ -10,7 +10,7 @@ import Book from './containers/Book/Book';
 import Spinner from './components/Spinner/Spinner';
 import './App.css';
 
-class App extends Component {
+export class App extends Component {
   state = {
     loading: false,
     error: false
